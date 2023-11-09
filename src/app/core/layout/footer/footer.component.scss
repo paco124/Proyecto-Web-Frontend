@@ -1,0 +1,26 @@
+.chartcenter {
+    text-align: -webkit-center;
+    columns: 12;
+    display: grid;
+    font-size: medium;
+    margin-top: 0%;
+}
+// //Paco
+// @media (max-width: 1550px) {
+//     .chartcenter {
+//         margin-top: 10%;
+//     }
+    
+// }
+// //Lizzy
+// @media (max-width: 1440px) {
+//     .chartcenter {
+//         margin-top: 10%;
+//     }
+// }
+
+@media (min-width: 1920px) {
+    .chartcenter {
+        margin-top: 80%;
+    }
+}

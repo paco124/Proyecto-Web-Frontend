@@ -1,0 +1,58 @@
+<div>  
+    <div>
+      <mat-toolbar class="mat-elevation-z8">
+          <button 
+          mat-icon-button
+          *ngIf="sidenav.mode === 'over'"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon *ngIf="!sidenav.opened"> menudu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+        <div>          
+          <span> Ticket de Turno</span>
+      </div>
+      </mat-toolbar>
+      
+      <mat-sidenav-container>
+        <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+          <img class="avatar" src='assets/Logo.png'/>
+      
+          <h4 class="name">Ticket de Turno</h4>
+      
+          <mat-divider class="divider"></mat-divider>
+          <button mat-button class="menu-button" routerLink="/User/agendar/agendarUser" (click) ="closeSideNav()">
+            <mat-icon>home</mat-icon>
+            <span class="name">Agendar Cita</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/User/consultar/consultarUser" (click) ="closeSideNav()">
+            <mat-icon>donut_small</mat-icon>
+            <span class="name">Consultar Citas</span>
+          </button>
+          <!-- <button mat-button class="menu-button"  routerLink="User//warranties" (click) ="closeSideNav()">
+            <mat-icon>dashboard</mat-icon>
+            <span class="name">Cancelar Cita</span>
+          </button> -->
+          <button mat-button class="menu-button" routerLink="/User/modificar/modificarUser" (click) ="closeSideNav()">
+            <mat-icon>chrome_reader_mode</mat-icon>
+            <span class="name">Modificar Cita</span>
+          </button>
+
+          
+          <mat-divider class="divider"></mat-divider>
+          <button mat-button class="menu-button" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span class="name">Log out</span>
+          </button>
+          <div><app-footer></app-footer></div>          
+        </mat-sidenav>
+        <mat-sidenav-content class="content mat-elevation-z8">
+          <div style="width: 100%; height: 100%;" >
+            <router-outlet></router-outlet> 
+          </div>
+          
+        </mat-sidenav-content>
+        
+      </mat-sidenav-container>
+    </div>
+</div>
