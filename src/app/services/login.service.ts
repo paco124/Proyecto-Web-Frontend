@@ -7,11 +7,9 @@ import { User } from './models/user';
   providedIn: 'root'
 })
 export class LoginService {
-  constructor(private httpcient:HttpClient) { }
-
-
-  // public async validateUser(user:User){
-  //   const url = "";
-  //   return  this.httpcient.post(url,user);
-  // }
+  constructor(private httpcient: HttpClient) { }
+  public async validateUser(user: User) {
+    const url = "https://localhost:7206/Login/validarUser";
+    return this.httpcient.post(url, user);
+  }
 }

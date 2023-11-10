@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'; 
 import { LayoutModule } from './core/layout/layout.module';
+import { TicketAdminModule } from './modules/ticket-admin/ticket-admin.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LayoutModule } from './core/layout/layout.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LayoutModule
+    LayoutModule,
+    TicketAdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

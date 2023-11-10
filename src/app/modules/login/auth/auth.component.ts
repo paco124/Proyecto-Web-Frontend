@@ -15,9 +15,8 @@ export class AuthComponent {
   logeado:boolean =false;
   spinner: boolean = false;
   userForm: FormGroup = new FormGroup({
-    Usuario :new FormControl('',[Validators.required]),
-    PWD : new FormControl('',[Validators.required]),
-    idApp: new FormControl(133)
+    username :new FormControl('',[Validators.required]),
+    password : new FormControl('',[Validators.required])
   });
 
   constructor(private router: Router,private loginService:LoginService) {
@@ -31,30 +30,35 @@ export class AuthComponent {
     localStorage.clear();
     this.submit = true;
     let user = this.userForm.value;
-      // (await this.loginService.validateUser(user)).subscribe({
-      //   next:(res:any)=>{
-      //    if(res.STATUS=="DONE" || localStorage.getItem('User') !== null){
+      (await this.loginService.validateUser(user)).subscribe({
+        next:(res:any)=>{
+         if(res.iD_USER== 2 || localStorage.getItem('User') !== null){
           
-      //     localStorage.setItem('User',JSON.stringify(res));
-      //     this.logeado =true
-      //     this.router.navigate(['/QA'])
-      //    }else{
-      //     this.reset()
-      //     this.submit=false;
-      //     this.spinner =false
-      //     this.logeado =false
-      //     this.router.navigate(['/authentication'])
-      //     Swal.fire({
-      //       position: 'center',
-      //       icon: 'error',
-      //       title: 'Usuario Incorrecto',
-      //       showConfirmButton: false,
-      //       timer: 3000
-      //     })
-      //    }
-      //    this.reset()
-      //   }
-      // })
+          localStorage.setItem('User',JSON.stringify(res));
+          this.logeado =true
+          this.router.navigate(['/User'])
+         }else if(res.iD_USER== 1 || localStorage.getItem('User') !== null){
+          localStorage.setItem('User',JSON.stringify(res));
+          this.logeado =true
+          this.router.navigate(['/Admin'])
+         }else{
+          this.reset()
+          this.submit=false;
+          this.spinner =false
+          this.logeado =false
+          this.router.navigate(['/authentication'])
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Usuario Incorrecto',
+            showConfirmButton: false,
+            timer: 3000
+          })
+         }
+         this.reset()
+        }
+      })
+
   }
 
   reset(){

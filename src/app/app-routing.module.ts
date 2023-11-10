@@ -20,7 +20,7 @@ const routes: Routes = [
         },
         {
           path:'Admin',
-          loadChildren:()=>import('./modules/ticket/ticket.module').then((m)=> m.TicketModule),
+          loadChildren:()=>import('./modules/ticket-admin/ticket-admin.module').then((m)=> m.TicketAdminModule),
           //canActivate:[AuthGuard],
         }
       ]
