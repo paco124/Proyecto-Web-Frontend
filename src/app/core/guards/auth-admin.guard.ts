@@ -6,8 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-
+export class AuthAdminGuard implements CanActivate {
   constructor(private service:AuthService, private router:Router){
 
   }
@@ -22,11 +21,12 @@ export class AuthGuard implements CanActivate {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
       let rol = this.service.returnRole();
-      if(rol ==2){
+      if(rol ==1){
         return true;
       }else{
         localStorage.clear();
         return this.router.navigate(['/authentication']);
-      }     
+      }
   }
+  
 }

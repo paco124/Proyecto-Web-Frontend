@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './modules/login/auth/auth.component';
 import { SkeletonComponent } from './core/layout/skeleton/skeleton.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { AuthAdminGuard } from './core/guards/auth-admin.guard';
 
 const routes: Routes = [
     {
@@ -16,12 +18,12 @@ const routes: Routes = [
         {
           path:'User',
           loadChildren:()=>import('./modules/ticket/ticket.module').then((m)=> m.TicketModule),
-          //canActivate:[AuthGuard],
+          canActivate:[AuthGuard],
         },
         {
           path:'Admin',
           loadChildren:()=>import('./modules/ticket-admin/ticket-admin.module').then((m)=> m.TicketAdminModule),
-          //canActivate:[AuthGuard],
+          canActivate:[AuthAdminGuard],
         }
       ]
     },

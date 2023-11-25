@@ -32,13 +32,14 @@ export class AuthComponent {
     let user = this.userForm.value;
       (await this.loginService.validateUser(user)).subscribe({
         next:(res:any)=>{
-         if(res.iD_USER== 2 || localStorage.getItem('User') !== null){
-          
-          localStorage.setItem('User',JSON.stringify(res));
+          console.log(res.data.iD_ROL)
+          const rol =res.data.iD_ROL
+         if(rol == 2 ){
+          localStorage.setItem('User',JSON.stringify(res.data));
           this.logeado =true
           this.router.navigate(['/User'])
-         }else if(res.iD_USER== 1 || localStorage.getItem('User') !== null){
-          localStorage.setItem('User',JSON.stringify(res));
+         }else if(rol == 1){
+          localStorage.setItem('User',JSON.stringify(res.data));
           this.logeado =true
           this.router.navigate(['/Admin'])
          }else{
