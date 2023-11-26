@@ -1,10 +1,13 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators , AbstractControl, ValidatorFn,} from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators , AbstractControl, ValidatorFn,} from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
 import { UserService } from 'src/app/services/user.service';
 import { Subject, forkJoin, takeUntil } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 const today = new Date();
 const month = today.getMonth();
@@ -58,13 +61,21 @@ export class AgendarComponent {
   //Envio datos
   source:any=[];
 
-  //Fecha
-  start: any = [];
-  end: any = [];
  
   fechareservadav:any=[];
   minDate:Date;
-  
+
+  spinner =false;
+  datos:any =[];
+  displayedColumns: string[] = [];
+  displaynameColumns: string[] = ['serie','Fecha','Componente','Sub-Componente','Motivo_falla','IN-OUT','OU',"PSI","WIW","Turno"];
+  displayedColumnsNames:string[] = ["CURP","NOMBRE","PATERNO","MATERNO", "TELEFONO","NIVEL","MUNICIPIO","ASUNTO","FECHA_CAPTURA","RESERVACION_CITA","USUARIO","ESTATUS"];
+  dataSource!: MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+
+
    regexValidator(regex: RegExp, errorKey: string): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
@@ -77,10 +88,10 @@ export class AgendarComponent {
 
   constructor(private userService: UserService, private formBuilder: FormBuilder) {
     this.formulario = this.formBuilder.group({
-      curp: ['', [Validators.required]],
-      nombre: ['', [Validators.required]],
-      paterno: ['', [Validators.required]],
-      materno: ['', [Validators.required]],
+      curp: ['', [Validators.required, this.regexValidator(/^[A-Z]{4}\d{6}[HM]{1}[A-Z]{6}\d{1}$/, 'curpInvalida')]],
+      nombre: ['', [Validators.required, Validators.maxLength(15), Validators.pattern(/^[A-Za-z]+$/)]],
+      paterno: ['', [Validators.required, Validators.maxLength(15), Validators.pattern(/^[A-Za-z]+$/)]],
+      materno: ['', [Validators.required, Validators.maxLength(15), Validators.pattern(/^[A-Za-z]+$/)]],
       telefono: ['', [Validators.required, this.regexValidator(/^\d{10}$/, 'telefonoInvalido')]],
       nivel: ['', [Validators.required]],
       municipio: ['', [Validators.required]],
@@ -90,7 +101,6 @@ export class AgendarComponent {
     this.minDate = moment().add(1, 'days').toDate();
     this.User = localStorage.getItem('User');
     const parsedData = JSON.parse(this.User);
-    console.log(this.User)
     this.nombre = parsedData.useR_NAME; // Obtener el valor de la propiedad "WIW"
     this.idUser = parsedData.iD_USER;
   }
@@ -98,16 +108,14 @@ export class AgendarComponent {
     this.nivelI.valueChange.subscribe(value => {this.nivelv =value})
     this.municipioI.valueChange.subscribe(value => {this.municipiov =value})
     this.asuntoI.valueChange.subscribe(value => {this.asuntov =value})
-    console.log
-    // this.dataSourceDiscrepancias = new MatTableDataSource(this.datos);
-    // this.dataSourceDPUGeneral = new MatTableDataSource(this.datosdpu);
-    // if (this.dataSource) {
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.sort;
-    // }
+    if (this.dataSource) {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
   }
   ngOnInit() {
     this.Apis();
+    this.getCitasForUser();
   }
   Apis() {
     forkJoin([
@@ -141,22 +149,20 @@ export class AgendarComponent {
   }
   
   async validar(): Promise<any> {
-    if(this.validarCurp() && this.formulario.valid){
+    if(this.formulario.valid){
       this.getDatosCapturados();
     }else{
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'No cuentas con permisos para guardar Discrepancias',
+        text: 'Algun campo esta mal escrito o no fue seleccionado',
         timer: 1800
       })
       this.clear()
     }
   }
 
-  validarCurp(){
-    return true;
-  }
+
   getDatosCapturados(){
     this.curpv = this.curpI.nativeElement.value;
     this.nombrev = this.nombreI.nativeElement.value;
@@ -183,7 +189,7 @@ export class AgendarComponent {
     }
     console.log(this.source)
     this.userService.SaveCita(this.source).subscribe(() => {
-      //this.getNeumaticos()
+      this.getCitasForUser()
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -194,7 +200,50 @@ export class AgendarComponent {
     })
     this.clear()
   }
-
+  getCitasForUser() {
+    this.spinner = true;
+    const data ={"user": this.idUser}
+    this.userService.getCitaForUser(data).subscribe((response: any) => {
+      response.data.forEach((item: any) => {
+        if (item.reservacion) {
+          const date = new Date(item.reservacion);
+          const formattedDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+          item.reservacion = formattedDate;
+        }
+        if (item.fecha) {
+          const date = new Date(item.fecha);
+          const formattedDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+          item.fecha = formattedDate;
+        }
+      });
+      this.datos = response.data
+      this.displayedColumns = this.getDisplayedColumns(this.datos);
+      this.dataSource = new MatTableDataSource(this.datos);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.spinner =false;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+  getDisplayedColumns(data: any[]): string[] {
+    const columns: string[] = ['curp'];
+    data.forEach((item: any) => {
+      Object.keys(item).forEach((key,index) => {
+        if (key !== 'serie' && !columns.includes(key)) {
+          columns.push(key);
+        }
+      });
+    });
+    return columns;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
   clear() {
     this.formulario.reset()
     this.formulario.markAsPristine();

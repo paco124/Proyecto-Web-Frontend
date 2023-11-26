@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConsultarComponent } from './consultar/consultar.component';
+import { CancelarCitaComponent } from './cancelar-cita/cancelar-cita.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'consultarUser',
+    redirectTo: 'cancelarCita',
     pathMatch: 'full'
   },
   {
-    path: 'consultarUser',
-    component: ConsultarComponent
+    path: 'cancelarCita',
+    component: CancelarCitaComponent
   }];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ConsultarURoutingModule { }
+export class CancelarRoutingModule { }

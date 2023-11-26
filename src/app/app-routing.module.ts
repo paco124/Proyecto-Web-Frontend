@@ -4,28 +4,20 @@ import { AuthComponent } from './modules/login/auth/auth.component';
 import { SkeletonComponent } from './core/layout/skeleton/skeleton.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthAdminGuard } from './core/guards/auth-admin.guard';
+import { NavbarAComponent } from './core/layout/navbar-a/navbar-a.component';
 
 const routes: Routes = [
     {
-      path:'',
+      path:'User',
       component: SkeletonComponent,
-      children:[
-        {
-          path:'',
-          redirectTo:'/authentication',
-          pathMatch:'full'
-        },
-        {
-          path:'User',
-          loadChildren:()=>import('./modules/ticket/ticket.module').then((m)=> m.TicketModule),
-          canActivate:[AuthGuard],
-        },
-        {
-          path:'Admin',
-          loadChildren:()=>import('./modules/ticket-admin/ticket-admin.module').then((m)=> m.TicketAdminModule),
-          canActivate:[AuthAdminGuard],
-        }
-      ]
+      loadChildren:()=>import('./modules/ticket/ticket.module').then((m)=> m.TicketModule),
+      canActivate:[AuthGuard]
+    },
+    {
+      path:'Admin',
+      component: NavbarAComponent,
+      loadChildren:()=>import('./modules/ticket-admin/ticket-admin.module').then((m)=> m.TicketAdminModule),
+      canActivate:[AuthAdminGuard]
     },
     {
       path:'authentication',

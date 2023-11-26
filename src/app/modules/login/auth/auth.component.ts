@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  @Output() log = new EventEmitter<boolean>();
+  // @Output() log = new EventEmitter<boolean>();
   submit:boolean = false;
   logeado:boolean =false;
   spinner: boolean = false;
@@ -41,7 +41,7 @@ export class AuthComponent {
          }else if(rol == 1){
           localStorage.setItem('User',JSON.stringify(res.data));
           this.logeado =true
-          this.router.navigate(['/Admin'])
+          this.router.navigate(['./Admin'])
          }else{
           this.reset()
           this.submit=false;

@@ -12,13 +12,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './footer/footer.component';
+import { NavbarAComponent } from './navbar-a/navbar-a.component';
 
 
 @NgModule({
   declarations: [
     SkeletonComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarAComponent
   ],
   imports: [
     CommonModule,

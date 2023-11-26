@@ -29,4 +29,13 @@ export class UserService {
   cancelarCita(data:any):any{
     return this.http.post(`https://localhost:7206/User/cancelarCita`,data);
   }
+  updateCita(data:any):any{
+    return this.http.post(`https://localhost:7206/User/updateCita`,data);
+  }
+  validarCitaForGet(data:any):any{
+    return this.http.post(`https://localhost:7206/User/validarCitaForGet`,data);
+  }
+  getCitasForUpdate(data:any):any{
+    return this.http.post(`https://localhost:7206/User/getCitasForUpdate`,data);
+  }
 }

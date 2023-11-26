@@ -1,0 +1,103 @@
+mat-toolbar {
+    background: #004a9f;
+    color: white;
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 270px;
+    border-right: none;
+    background: #002b5c;
+    color: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.content {
+    height: calc(100vh - 130px);
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+    padding: 16px;
+    overflow: auto;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+
+    margin-bottom: 0;
+    margin-top: 0;
+
+    mat-icon {
+        margin-right: 10px;
+        color: azure;
+
+        font-size: larger;
+    }
+}
+
+.avatar {
+    margin-top: 8px;
+    width: 90px;
+    height: 110px;
+    border-radius: 50%;
+}
+
+.header {
+    margin-top: -8px;
+    width: 90px;
+    height: 110px;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 8px;
+    margin-bottom: 1px;
+    font-weight: normal;
+    color: azure;
+    font-family: sans-serif;
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.menu-button:hover {
+    span {
+        font-size: 1.1rem;
+    }
+
+    mat-icon {
+        scale: 1.1;
+    }
+}
+
+.divider {
+    margin-top: 0;
+    margin-bottom: 0;
+}

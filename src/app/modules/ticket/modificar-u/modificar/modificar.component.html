@@ -1,1 +1,80 @@
-<p>modificar works!</p>
+<mat-card class="bar">
+    <mat-card-content>Modificar Cita</mat-card-content>
+</mat-card>
+<br><br>
+<div style="text-align: center; display: flex; justify-content: center;">
+    <form [formGroup]="formulario">
+        <mat-form-field class="example-full-width" appearance="fill" style="width:300px">
+            <mat-label>CURP</mat-label>
+            <input matInput id="curp" #curp formControlName="curp" maxlength="18" minlength="18"
+                style="text-transform: uppercase;">
+        </mat-form-field>
+    </form>
+    <button mat-fab extended color="primary" (click)="buscar()">Buscar</button>
+</div><br>
+
+<div>
+    <div class="chartcenter">
+            <div>
+                <form [formGroup]="formularioUpdate">
+                    <mat-form-field appearance="fill" style="width:250px">
+                        <mat-label>NOMBRE</mat-label>
+                        <input matInput id="nombre" [(ngModel)]="nombrev" #nombre value="nombre" formControlName="nombre" maxlength="15">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" style="width:250px">
+                        <mat-label>PATERNO</mat-label>
+                        <input matInput id="paterno" [(ngModel)]="paternov" #paterno value="paterno" formControlName="paterno" maxlength="15">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" style="width:250px">
+                        <mat-label>MATERNO</mat-label>
+                        <input matInput id="materno" [(ngModel)]="maternov" #materno value="materno" formControlName="materno" maxlength="15">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" style="width:250px">
+                        <mat-label>TELEFONO</mat-label>
+                        <input matInput id="telefono" [(ngModel)]="telefonov" #telefono value="telefono" formControlName="telefono"
+                            maxlength="10">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" style="width:250px">
+                        <mat-label>NIVEL</mat-label>
+                        <mat-select id="nivel" #nivel value="nivel" formControlName="nivel">
+                            <mat-option *ngFor="let item of niveles" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" style="width:200px">
+                        <mat-label>MUNICIPIO</mat-label>
+                        <mat-select id="municipio" #municipio value="municipio" formControlName="municipio">
+                            <mat-option *ngFor="let item of municipios" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" style="width:200px">
+                        <mat-label>ASUNTO</mat-label>
+                        <mat-select id="asunto" #asunto value="asunto" formControlName="asunto">
+                            <mat-option *ngFor="let item of asuntos" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Elige una fecha</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fecha_reservada"
+                            (dateInput)="onDateSelected($event)" [min]="minDate">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </form>
+                <button mat-fab extended color="primary" (click)="actualizar()">Actualizar</button>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<mat-card class="bar">
+    <mat-card-content>Cancelar Cita</mat-card-content>
+</mat-card>
+<br><br>
+<div style="text-align: center; display: flex; justify-content: center;">
+    <form [formGroup]="formulario">
+        <mat-form-field class="example-full-width" appearance="fill" style="width:300px">
+            <mat-label>CURP</mat-label>
+            <input matInput id="curp" #curp formControlName="curp" maxlength="18" minlength="18"
+                style="text-transform: uppercase;">
+        </mat-form-field>
+    </form>
+    <button mat-fab extended color="primary" (click)="validarCurp()">Cancelar</button>
+</div><br>

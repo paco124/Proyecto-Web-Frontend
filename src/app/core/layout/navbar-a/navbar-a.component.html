@@ -17,17 +17,25 @@
           <h4 class="name">Ticket de Turno</h4>
       
           <mat-divider class="divider"></mat-divider>
-          <button mat-button class="menu-button" routerLink="/User/agendar/agendarUser" (click) ="closeSideNav()">
+          <button mat-button class="menu-button" routerLink="/Admin/agendarAdmin" (click) ="closeSideNav()">
             <mat-icon>home</mat-icon>
             <span class="name">Agendar Cita</span>
           </button>
-          <button mat-button class="menu-button" routerLink="/User/modificar/modificarUser" (click) ="closeSideNav()">
+          <button mat-button class="menu-button" routerLink="/Admin/dashboard" (click) ="closeSideNav()">
             <mat-icon>chrome_reader_mode</mat-icon>
-            <span class="name">Modificar Cita</span>
+            <span class="name">Dashboard</span>
           </button>
-          <button mat-button class="menu-button" routerLink="/User/cancelar/cancelarCita" (click) ="closeSideNav()">
+          <button mat-button class="menu-button" routerLink="/Admin/cambiarEstatusCita"(click) ="closeSideNav()">
             <mat-icon>dashboard</mat-icon>
-            <span class="name">Cancelar Cita</span>
+            <span class="name">Cambiar Estatus</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/Admin/usuarios"(click) ="closeSideNav()">
+            <mat-icon>dashboard</mat-icon>
+            <span class="name">Usuarios</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="/Admin/CRUDdatos"(click) ="closeSideNav()">
+            <mat-icon>dashboard</mat-icon>
+            <span class="name">CRUD Datos</span>
           </button>
           
           <mat-divider class="divider"></mat-divider>
