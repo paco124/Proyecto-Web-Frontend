@@ -21,4 +21,10 @@ export class AdminService {
   getCitasForAdmin():any{
     return this.http.get(`https://localhost:7206/Admin/getCitasForAdmin`);
   }
+  getRoles():any{
+    return this.http.get(`https://localhost:7206/Admin/getRoles`);
+  }
+  getAllUsers():any{
+    return this.http.get(`https://localhost:7206/Admin/getAllUsers`);
+  }
 }

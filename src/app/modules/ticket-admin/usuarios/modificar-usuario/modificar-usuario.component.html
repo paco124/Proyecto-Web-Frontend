@@ -1,0 +1,35 @@
+<br><br>
+<div style="text-align: center; display: flex; justify-content: center;">
+    <form [formGroup]="formulario">
+        <mat-form-field class="example-full-width" appearance="fill" style="width:300px">
+            <mat-label>ID_USER</mat-label>
+            <input matInput id="id_user" #id_user formControlName="id_user" maxlength="4" minlength="1"
+                style="text-transform: uppercase;">
+        </mat-form-field>
+    </form>
+    <button mat-fab extended color="primary" (click)="buscar()">Buscar</button>
+</div><br>
+
+<div>
+    <div class="chartcenter">
+            <div>
+                <form [formGroup]="formularioUpdate">
+                    <mat-form-field appearance="fill" style="width:250px">
+                        <mat-label>USER NAME</mat-label>
+                        <input matInput id="user_name" #user_name value="" formControlName="user_name" maxlength="15">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" style="width:250px">
+                        <mat-label>ROL</mat-label>
+                        <mat-select id="rol" #rol value="rol" formControlName="rol">
+                            <mat-option *ngFor="let item of roles" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </form>
+                <button mat-fab extended color="primary" (click)="actualizar()">Actualizar</button>
+            </div>
+    </div>
+</div>

@@ -8,6 +8,11 @@ import { NavbarAComponent } from './core/layout/navbar-a/navbar-a.component';
 
 const routes: Routes = [
     {
+      path: '',
+      redirectTo: 'authentication',
+      pathMatch: 'full'
+    },
+    {
       path:'User',
       component: SkeletonComponent,
       loadChildren:()=>import('./modules/ticket/ticket.module').then((m)=> m.TicketModule),

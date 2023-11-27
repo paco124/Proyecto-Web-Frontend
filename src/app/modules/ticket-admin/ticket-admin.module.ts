@@ -21,6 +21,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { AgregarUsusarioComponent } from './usuarios/agregar-ususario/agregar-ususario.component';
+import { ModificarUsuarioComponent } from './usuarios/modificar-usuario/modificar-usuario.component';
+import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-usuario.component';
+
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     CancelarAComponent,
     DashboardComponent,
     UsuariosComponent,
-    CrudDatosComponent
+    CrudDatosComponent,
+    AgregarUsusarioComponent,
+    ModificarUsuarioComponent,
+    EliminarUsuarioComponent,
+    
   ],
   imports: [
     CommonModule,
