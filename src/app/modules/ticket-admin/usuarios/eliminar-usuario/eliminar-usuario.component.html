@@ -1,1 +1,14 @@
-<p>eliminar-usuario works!</p>
+<mat-card class="bar">
+    <mat-card-content>Eliminar Usuario</mat-card-content>
+</mat-card>
+<br><br>
+<div style="text-align: center; display: flex; justify-content: center;">
+    <form [formGroup]="formulario">
+        <mat-form-field class="example-full-width" appearance="fill" style="width:300px">
+            <mat-label>CURP</mat-label>
+            <input matInput id="id" #id formControlName="id" maxlength="4" 
+                style="text-transform: uppercase;">
+        </mat-form-field>
+    </form>
+    <button mat-fab extended color="primary" (click)="validarForm()">Cancelar</button>
+</div><br>

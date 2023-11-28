@@ -27,4 +27,7 @@ export class AdminService {
   getAllUsers():any{
     return this.http.get(`https://localhost:7206/Admin/getAllUsers`);
   }
+  setEstatus(data:any):any{
+    return this.http.post(`https://localhost:7206/Admin/setEstatus`,data);
+  }
 }
