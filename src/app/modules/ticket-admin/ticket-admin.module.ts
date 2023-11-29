@@ -6,7 +6,10 @@ import { AgendarAComponent } from './agendar-a/agendar-a.component';
 import { CancelarAComponent } from './cancelar-a/cancelar-a.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { CrudDatosComponent } from './crud-datos/crud-datos.component';
+import { AgregarUsusarioComponent } from './usuarios/agregar-ususario/agregar-ususario.component';
+import { ModificarUsuarioComponent } from './usuarios/modificar-usuario/modificar-usuario.component';
+import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-usuario.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -21,9 +24,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AgregarUsusarioComponent } from './usuarios/agregar-ususario/agregar-ususario.component';
-import { ModificarUsuarioComponent } from './usuarios/modificar-usuario/modificar-usuario.component';
-import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-usuario.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+
+
 
 
 
@@ -33,7 +36,6 @@ import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-u
     CancelarAComponent,
     DashboardComponent,
     UsuariosComponent,
-    CrudDatosComponent,
     AgregarUsusarioComponent,
     ModificarUsuarioComponent,
     EliminarUsuarioComponent,
@@ -47,7 +49,7 @@ import { EliminarUsuarioComponent } from './usuarios/eliminar-usuario/eliminar-u
     MatRippleModule,MatDatepickerModule,FormsModule,ReactiveFormsModule,
     MatSelectModule,MatOptionModule,MatTableModule,
     MatTabsModule,MatButtonModule,MatIconModule,
-    MatDividerModule,MatInputModule,MatCardModule
+    MatDividerModule,MatInputModule,MatCardModule, HighchartsChartModule
   ]
 })
 export class TicketAdminModule { }

@@ -4,7 +4,6 @@ import { AgendarAComponent } from './agendar-a/agendar-a.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CancelarAComponent } from './cancelar-a/cancelar-a.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { CrudDatosComponent } from './crud-datos/crud-datos.component';
 
 const routes: Routes = [
   {
@@ -29,8 +28,8 @@ const routes: Routes = [
     component: UsuariosComponent
   },
   {
-    path: 'CRUDdatos',
-    component: CrudDatosComponent
+    path:'CRUDdatos',
+    loadChildren:()=>import('./crud-datos/crud-datos.module').then((m)=>m.CrudDatosModule)
   }
 ];
 

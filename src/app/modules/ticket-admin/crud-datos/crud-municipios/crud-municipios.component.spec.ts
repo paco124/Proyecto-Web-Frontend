@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrudDatosComponent } from './crud-datos.component';
+import { CrudMunicipiosComponent } from './crud-municipios.component';
 
-describe('CrudDatosComponent', () => {
-  let component: CrudDatosComponent;
-  let fixture: ComponentFixture<CrudDatosComponent>;
+describe('CrudMunicipiosComponent', () => {
+  let component: CrudMunicipiosComponent;
+  let fixture: ComponentFixture<CrudMunicipiosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrudDatosComponent ]
+      declarations: [ CrudMunicipiosComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CrudDatosComponent);
+    fixture = TestBed.createComponent(CrudMunicipiosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

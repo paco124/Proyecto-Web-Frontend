@@ -230,7 +230,7 @@ export class AgendarAComponent {
     const columns: string[] = ['curp'];
     data.forEach((item: any) => {
       Object.keys(item).forEach((key,index) => {
-        if (key !== 'serie' && !columns.includes(key)) {
+        if (key !== 'curp' && !columns.includes(key)) {
           columns.push(key);
         }
       });

@@ -33,9 +33,20 @@
             <mat-icon>dashboard</mat-icon>
             <span class="name">Usuarios</span>
           </button>
-          <button mat-button class="menu-button" routerLink="/Admin/CRUDdatos"(click) ="closeSideNav()">
+          <!-- <button mat-button class="menu-button" routerLink="/Admin/CRUDdatos"(click) ="closeSideNav()">
             <mat-icon>dashboard</mat-icon>
             <span class="name">CRUD Datos</span>
+          </button> -->
+          <button mat-button class="menu-button" [matMenuTriggerFor]="wheels">
+            <mat-icon>description</mat-icon>
+            <span class="name">CRUD Datos</span>
+            <mat-menu #wheels="matMenu">
+              <button mat-menu-item routerLink="/Admin/CRUDdatos/asunto" (click) ="closeSideNav()">Asunto</button>
+              <button mat-menu-item routerLink="/Admin/CRUDdatos/estatus" (click) ="closeSideNav()">Estatus</button>
+              <button mat-menu-item routerLink="/Admin/CRUDdatos/municipios" (click) ="closeSideNav()">Municipios</button>
+              <button mat-menu-item routerLink="/Admin/CRUDdatos/niveles" (click) ="closeSideNav()">Niveles</button>
+              <button mat-menu-item routerLink="/Admin/CRUDdatos/roles" (click) ="closeSideNav()">Roles</button>
+            </mat-menu>
           </button>
           
           <mat-divider class="divider"></mat-divider>

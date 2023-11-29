@@ -30,4 +30,10 @@ export class AdminService {
   setEstatus(data:any):any{
     return this.http.post(`https://localhost:7206/Admin/setEstatus`,data);
   }
+  getDataChart1():any{
+    return this.http.get(`https://localhost:7206/Admin/getDataChart1`);
+  }
+  getDataChart2():any{
+    return this.http.get(`https://localhost:7206/Admin/getDataChart2`);
+  }
 }
