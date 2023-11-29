@@ -69,7 +69,7 @@ export class AgendarComponent {
   datos:any =[];
   displayedColumns: string[] = [];
   displaynameColumns: string[] = ['serie','Fecha','Componente','Sub-Componente','Motivo_falla','IN-OUT','OU',"PSI","WIW","Turno"];
-  displayedColumnsNames:string[] = ["CURP","NOMBRE","PATERNO","MATERNO", "TELEFONO","NIVEL","MUNICIPIO","ASUNTO","FECHA_CAPTURA","RESERVACION_CITA","USUARIO","ESTATUS"];
+  displayedColumnsNames:string[] = ["CURP","NOMBRE","PATERNO","MATERNO", "TELEFONO","NIVEL","MUNICIPIO","ASUNTO","FECHA_CAPTURA","RESERVACION_CITA","USUARIO","ESTATUS","TURNO"];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

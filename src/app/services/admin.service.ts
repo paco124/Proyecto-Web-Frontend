@@ -36,4 +36,19 @@ export class AdminService {
   getDataChart2():any{
     return this.http.get(`https://localhost:7206/Admin/getDataChart2`);
   }
+  insertAsunto(data:any):any{
+    return this.http.post(`https://localhost:7206/Admin/insertAsunto`,data);
+  }
+  insertEstatus(data:any):any{
+    return this.http.post(`https://localhost:7206/Admin/insertEstatus`,data);
+  }
+  insertMunicipio(data:any):any{
+    return this.http.post(`https://localhost:7206/Admin/insertMunicipio`,data);
+  }
+  insertNivel(data:any):any{
+    return this.http.post(`https://localhost:7206/Admin/insertNivel`,data);
+  }
+  insertRol(data:any):any{
+    return this.http.post(`https://localhost:7206/Admin/insertRol`,data);
+  }
 }

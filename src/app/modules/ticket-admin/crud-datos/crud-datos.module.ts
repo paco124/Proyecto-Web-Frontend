@@ -22,6 +22,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TablaGenericaComponent } from './tabla-generica/tabla-generica.component';
+import { InsertGenericoComponent } from './insert-generico/insert-generico.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TablaGenericaComponent } from './tabla-generica/tabla-generica.componen
     CrudMunicipiosComponent,
     CrudNivelesComponent,
     CrudRolesComponent,
-    TablaGenericaComponent
+    TablaGenericaComponent,
+    InsertGenericoComponent
   ],
   imports: [
     CommonModule,

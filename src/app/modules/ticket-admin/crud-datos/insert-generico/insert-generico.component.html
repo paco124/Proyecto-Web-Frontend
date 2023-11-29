@@ -1,0 +1,10 @@
+<div style="text-align: center; display: flex; justify-content: center;">
+    <form [formGroup]="formulario">
+        <mat-form-field class="example-full-width" appearance="fill" style="width:300px">
+            <mat-label>DESCRIPCION</mat-label>
+            <input matInput id="dato" #dato formControlName="dato" maxlength="30" minlength="5"
+                style="text-transform: uppercase;">
+        </mat-form-field>
+    </form>
+    <button mat-fab extended color="primary" (click)="onSubmit()">CREAR</button>
+</div><br>
